@@ -8,8 +8,8 @@ import io.reactivex.schedulers.Schedulers
 
 class MainModel {
 
-    fun searchItems(query: String): Single<Item> {
-        return APIClient.instance.getDocuments(query, 10, 1)
+    fun searchItems(query: String, display: Int): Single<Item> {
+        return APIClient.instance.getDocuments(query, display, 1)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

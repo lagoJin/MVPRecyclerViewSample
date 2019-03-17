@@ -11,7 +11,7 @@ interface MainContract {
     }
 
     interface Presenter : IPresenter<View> {
-        fun searchData(query: String)
+        fun searchData(query: String,display: Int)
     }
 
 }

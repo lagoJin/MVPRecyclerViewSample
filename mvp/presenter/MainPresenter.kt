@@ -9,8 +9,8 @@ class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter
 
     private val mainModel: MainModel by lazy { MainModel() }
 
-    override fun searchData(query: String) {
-        val disposable = mainModel.searchItems(query)
+    override fun searchData(query: String, display: Int) {
+        val disposable = mainModel.searchItems(query, display)
             .subscribe(
                 { result ->
                     mRootView?.recyclerViewInit(result)
