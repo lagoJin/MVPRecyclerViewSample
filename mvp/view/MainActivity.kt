@@ -15,17 +15,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main), 
     private val presenter by lazy { MainPresenter() }
     private var display = 10
 
-    override fun start() {
+    init{
         presenter.attachView(this)
-        mBinder.btnSearch.setOnClickListener {
+    }
+
+    override fun start() {
+
+        dataBinding.btnSearch.setOnClickListener {
             display = 10
-            presenter.searchData(mBinder.edSearch.text.toString(), display)
+            presenter.searchData(dataBinding.edSearch.text.toString(), display)
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mBinder.rvMain.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-                if (!mBinder.rvMain.canScrollVertically(1)) {
+            dataBinding.rvMain.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                if (!dataBinding.rvMain.canScrollVertically(1)) {
                     display += 10
-                    presenter.searchData(mBinder.edSearch.text.toString(), display)
+                    presenter.searchData(dataBinding.edSearch.text.toString(), display)
                 }
             }
         }
@@ -33,8 +37,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main), 
     }
 
     override fun recyclerViewInit(items: Item) {
-        mBinder.rvMain.adapter = MainAdapter(items)
-        mBinder.rvMain.apply {
+        dataBinding.rvMain.adapter = MainAdapter(items)
+        dataBinding.rvMain.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             setHasFixedSize(true)
         }

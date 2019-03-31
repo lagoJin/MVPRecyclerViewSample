@@ -13,11 +13,11 @@ abstract class BaseActivity<B : ViewDataBinding>(private val layoutId: Int) : Ap
         private val arrayList = ArrayList<Activity>()
     }
 
-    protected lateinit var mBinder: B
+    protected lateinit var dataBinding: B
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinder = DataBindingUtil.setContentView(this, layoutId)
+        dataBinding = DataBindingUtil.setContentView(this, layoutId)
         Logger.d("onCreate ${this.javaClass.simpleName}")
         arrayList.add(this)
         start()
@@ -25,7 +25,7 @@ abstract class BaseActivity<B : ViewDataBinding>(private val layoutId: Int) : Ap
 
     abstract fun start()
 
-    fun clearActivity() {
+    internal fun clearActivity() {
         arrayList.clear()
     }
 
