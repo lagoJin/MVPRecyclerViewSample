@@ -13,7 +13,9 @@ class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter
         val disposable = mainModel.searchItems(query, display)
             .subscribe(
                 { result ->
-                    mRootView?.recyclerViewInit(result)
+                    mRootView?.apply {
+                        recyclerViewInit(result)
+                    }
                 },
                 { Logger.e(it.localizedMessage) }
             )
