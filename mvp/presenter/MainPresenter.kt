@@ -19,6 +19,6 @@ class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter
                 },
                 { Logger.e(it.localizedMessage) }
             )
-        addSubScription(disposable)
+        addSubscription(disposable)
     }
 }

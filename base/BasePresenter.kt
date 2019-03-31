@@ -29,7 +29,7 @@ open class BasePresenter<T : IBaseView> : IPresenter<T> {
         if (!isViewAttached) throw MvpViewNotAttachedException()
     }
 
-    fun addSubScription(disposable: Disposable) {
+    fun addSubscription(disposable: Disposable) {
         compositeDisposable.add(disposable)
     }
 
